@@ -24,8 +24,13 @@ let mapleader=";"
 
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/PaperColor.vim'
+NeoBundle 'bling/vim-airline'
 " stl 语法 
-NeoBundle 'Mizuchi/STL-Syntax'
+NeoBundle 'NLKNguyen/c-syntax.vim'
+"NeoBundle 'Mizuchi/STL-Syntax'
+NeoBundle 'octol/vim-cpp-enhanced-highlight'
+NeoBundle 'hdima/python-syntax'
 " 可视化缩进
 NeoBundle 'nathanaelkane/vim-indent-guides'
 " c h 切换
@@ -42,6 +47,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'c.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'vim-snippets'
+NeoBundle 'Shougo/neocomplete.vim'
 
 " 搜索
 NeoBundle 'dyng/ctrlsf.vim'
@@ -139,11 +145,36 @@ set nocompatible
 " vim 自身命令行模式智能补全
 set wildmenu
 
+
+" >>>>>>>>>>>>>>>>>
 " 配色方案
 set background=dark
 "colorscheme solarized
 colorscheme molokai
 "colorscheme phd
+
+" 设置paperColor
+"set t_Co=256
+"colorscheme PaperColor
+
+" 设置vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+
+
+
+" <<<<<<<<<<<<<<<<<<<
+
 
 " 将外部命令 wmctrl 控制窗口最大化的命令行参数封装成一个 vim 的函数
 fun! ToggleFullscreen()
@@ -204,6 +235,11 @@ syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
 
+" 设置vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+" 设置python-syntax
+let python_highlight_all = 1
 " >>
 " 缩进
 
@@ -236,8 +272,8 @@ nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 " 基于缩进或语法进行代码折叠
 set foldenable              " 开始折叠
-"set foldmethod=indent
-set foldmethod=syntax
+set foldmethod=indent
+"set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set foldlevelstart=99       " 打开文件是默认不折叠代码
 "set nofoldenable
@@ -355,6 +391,10 @@ let g:UltiSnipsSnippetDirectories=["/Users/zjz/.vim/bundle/ultisnips/mysnippets"
 "let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 
+" >>
+" neocomplete补全打开
+let g:neocomplete#enable_at_startup = 1
+
 
 
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -367,7 +407,7 @@ let g:UltiSnipsSnippetDirectories=["/Users/zjz/.vim/bundle/ultisnips/mysnippets"
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let g:winManagerWindowLayout='FileExplorer|TagList'
-nmap ft :WMToggle<cr>
+nmap <leader>ft :WMToggle<cr>
 "
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "
