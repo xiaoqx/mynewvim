@@ -58,6 +58,12 @@ NeoBundle 'winmanager'
 
 NeoBundle 'conque'
 
+" undo
+NeoBundle 'sjl/gundo.vim'
+
+" easymotion
+NeoBundle 'easymotion/vim-easymotion'
+
  call neobundle#end()
 
  filetype plugin indent on
@@ -471,8 +477,10 @@ map testd :call AddTitle3():$o
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 nnoremap <silent> <F5> :10sp<CR><ESC>:ConqueTerm bash <CR> 
+nnoremap <Leader>ud :GundoToggle<CR>
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "
+
 
 
 
