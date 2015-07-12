@@ -26,6 +26,14 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/PaperColor.vim'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'Lokaltog/vim-distinguished'
+NeoBundle 'vim-scripts/github-theme'
+NeoBundle 'vim-scripts/wombat256.vim'
+NeoBundle 'vim-scripts/werks.vim'
+NeoBundle 'vim-scripts/sonoma.vim'
+NeoBundle 'vim-scripts/primary.vim'
+NeoBundle 'vim-scripts/apprentice.vim'
+
 " stl 语法 
 NeoBundle 'NLKNguyen/c-syntax.vim'
 "NeoBundle 'Mizuchi/STL-Syntax'
@@ -154,14 +162,21 @@ set wildmenu
 
 " >>>>>>>>>>>>>>>>>
 " 配色方案
-set background=dark
+"set background=dark
 "colorscheme solarized
-colorscheme molokai
+"colorscheme molokai
 "colorscheme phd
+"colorscheme distinguished
+"colorscheme github
+"colorscheme wombat256mod
+"colorscheme werks
+"colorscheme sonoma
+"colorscheme primary
+"colorscheme apprentice
 
 " 设置paperColor
-"set t_Co=256
-"colorscheme PaperColor
+set t_Co=256
+colorscheme PaperColor
 
 " 设置vim-airline
 let g:airline#extensions#tabline#enabled = 1
