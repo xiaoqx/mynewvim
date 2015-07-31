@@ -53,7 +53,7 @@ NeoBundle 'taglist'
 NeoBundle 'scrooloose/nerdcommenter'
 " 代码开发， 补全
 NeoBundle 'c.vim'
-NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'SirVer/ultisnips'
 NeoBundle 'vim-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
 
@@ -407,10 +407,12 @@ nnoremap <Leader>sp :CtrlSF<CR>
 " 模板补全
 " UltiSnips 的 tab 键与 YCM 冲突，重新设定
 "let g:UltiSnipsSnippetDirectories=["mysnippets"]
-let g:UltiSnipsSnippetDirectories=["/Users/zjz/.vim/bundle/ultisnips/mysnippets"]
+let g:UltiSnipsSnippetDirectories=["/home/xqx/.vim/bundle/ultisnips/mysnippets"]
 "let g:UltiSnipsExpandTrigger="<leader><tab>"
 "let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " >>
 " neocomplete补全打开
@@ -438,6 +440,9 @@ map <leader>sh <ESC>:ConqueTerm bash<CR>
 map <leader>psh <ESC>:ConqueTermSplit bash<CR> 
 map <leader>vsh <ESC>:ConqueTermVSplit bash<CR> 
 
+" map c-v c-v to c-r c-w for paste to command line
+nnoremap <C-c><C-v> :<C-r><C-w>
+vnoremap <C-c><C-v> y:<C-r>"
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
@@ -491,8 +496,18 @@ map testd :call AddTitle3():$o
 
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+nnoremap <F2> :set wrap! wrap?<CR>
+nnoremap <F3> :set list! list?<CR>
+" set cscope search in quickfix
+nnoremap <F4> <ESC>:set csqf=s-,c-,d-,i-,t-,e-<CR><ESC>:copen<CR>
+
 nnoremap <silent> <F5> :10sp<CR><ESC>:ConqueTerm bash <CR> 
+
+nnoremap <F6> :WMToggle<cr>
+
 nnoremap <Leader>ud :GundoToggle<CR>
+
+
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "
 
