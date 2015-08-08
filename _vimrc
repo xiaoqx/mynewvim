@@ -56,6 +56,7 @@ NeoBundle 'c.vim'
 "NeoBundle 'SirVer/ultisnips'
 NeoBundle 'vim-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'ervandew/supertab'
 
 " 搜索
 NeoBundle 'dyng/ctrlsf.vim'
@@ -496,14 +497,15 @@ map testd :call AddTitle3():$o
 
 
 " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-nnoremap <F2> :set wrap! wrap?<CR>
-nnoremap <F3> :set list! list?<CR>
+nnoremap <F2> :WMToggle<cr>
+"nnoremap <F3> :set list! list?<CR>
+nnoremap <F3> :execute "noautocmd vimgrep /" . expand("<cword>") . "/gj **/*." .  expand("%:e") <Bar> cw<CR>
 " set cscope search in quickfix
 nnoremap <F4> <ESC>:set csqf=s-,c-,d-,i-,t-,e-<CR><ESC>:copen<CR>
 
 nnoremap <silent> <F5> :10sp<CR><ESC>:ConqueTerm bash <CR> 
+nnoremap <F6> :set wrap! wrap?<CR>
 
-nnoremap <F6> :WMToggle<cr>
 
 nnoremap <Leader>ud :GundoToggle<CR>
 
