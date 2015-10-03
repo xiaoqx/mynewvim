@@ -73,6 +73,9 @@ NeoBundle 'sjl/gundo.vim'
 " easymotion
 NeoBundle 'easymotion/vim-easymotion'
 
+" pfp-vim for binary edit with 010 bt
+NeoBundle 'd0c-s4vage/pfp-vim'
+
  call neobundle#end()
 
  filetype plugin indent on
