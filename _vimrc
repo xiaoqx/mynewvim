@@ -33,6 +33,8 @@ NeoBundle 'vim-scripts/werks.vim'
 NeoBundle 'vim-scripts/sonoma.vim'
 NeoBundle 'vim-scripts/primary.vim'
 NeoBundle 'vim-scripts/apprentice.vim'
+NeoBundle 'vim-scripts/Ambient-Color-Scheme'
+NeoBundle "flazz/vim-colorschemes"
 
 " stl 语法 
 NeoBundle 'NLKNguyen/c-syntax.vim'
@@ -177,10 +179,19 @@ set wildmenu
 "colorscheme sonoma
 "colorscheme primary
 "colorscheme apprentice
+"
+"colorscheme tango2
+"colorscheme ambient
+"colorscheme  0x7A69_dark
+"colorscheme  256-grayvim
+
 
 " 设置paperColor
 set t_Co=256
+set term=screen-256color
 colorscheme PaperColor
+"
+
 
 " 设置vim-airline
 let g:airline#extensions#tabline#enabled = 1
