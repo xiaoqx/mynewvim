@@ -33,6 +33,8 @@ NeoBundle 'vim-scripts/werks.vim'
 NeoBundle 'vim-scripts/sonoma.vim'
 NeoBundle 'vim-scripts/primary.vim'
 NeoBundle 'vim-scripts/apprentice.vim'
+NeoBundle 'vim-scripts/Ambient-Color-Scheme'
+NeoBundle "flazz/vim-colorschemes"
 
 " stl 语法 
 NeoBundle 'NLKNguyen/c-syntax.vim'
@@ -57,7 +59,6 @@ NeoBundle 'c.vim'
 NeoBundle 'vim-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'ervandew/supertab'
-NeoBundle 'Valloric/YouCompleteMe'
 
 " 搜索
 NeoBundle 'dyng/ctrlsf.vim'
@@ -74,9 +75,8 @@ NeoBundle 'sjl/gundo.vim'
 " easymotion
 NeoBundle 'easymotion/vim-easymotion'
 
-" python IDE
-"NeoBundle 'python-rope/ropevim'
-NeoBundle 'pep8'
+" pfp-vim for binary edit with 010 bt
+NeoBundle 'd0c-s4vage/pfp-vim'
 
  call neobundle#end()
 
@@ -179,10 +179,19 @@ set wildmenu
 "colorscheme sonoma
 "colorscheme primary
 "colorscheme apprentice
+"
+"colorscheme tango2
+"colorscheme ambient
+"colorscheme  0x7A69_dark
+"colorscheme  256-grayvim
+
 
 " 设置paperColor
 set t_Co=256
+set term=screen-256color
 colorscheme PaperColor
+"
+
 
 " 设置vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -513,6 +522,10 @@ nnoremap <F6> :set wrap! wrap?<CR>
 
 
 nnoremap <Leader>ud :GundoToggle<CR>
+" \16                 十六进制格式查看
+nmap <leader>16 <ESC>:%!xxd<ESC>
+" \r16                返回普通格式
+nmap <leader>r16 <ESC>:%!xxd -r<ESC>
 
 " 相对行号      行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行
 set relativenumber number
@@ -532,60 +545,12 @@ nnoremap <C-m> :call NumberToggle()<cr>
 
 
 
+
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "
 
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" python IDE
-"map <leader>j :RopeGotoDefinition<CR>
-"map <leader>r :RopeRename<CR>
-
-let g:pep8_map='<leader>88'
 
 
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-" ################### 自动补全 ###################
-
-" 代码自动补全
-"迄今为止用到的最好的自动VIM自动补全插件
-"重启 :YcmRestartServer
-"Bundle 'Valloric/YouCompleteMe'
-"youcompleteme  默认tab  s-tab 和自动补全冲突
-"let g:ycm_key_list_select_completion=['<c-n>']
-let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion=['<c-p>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
-let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
-let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
-let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_tags_files = 1
-
-"let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
-
-" 跳转到定义处, 分屏打开
-let g:ycm_goto_buffer_command = 'horizontal-split'
-" nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-
-" 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
-" old version
-if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
-    let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
-endif
-" new version
-if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
-    let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-endif
-
-" 直接触发自动补全 insert模式下
-" let g:ycm_key_invoke_completion = '<C-Space>'
-" 黑名单,不启用
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'gitcommit' : 1,
-      \}
 
