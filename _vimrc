@@ -57,7 +57,7 @@ NeoBundle 'c.vim'
 NeoBundle 'vim-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'ervandew/supertab'
-NeoBundle 'Valloric/YouCompleteMe'
+"NeoBundle 'Valloric/YouCompleteMe'
 
 " 搜索
 NeoBundle 'dyng/ctrlsf.vim'
@@ -140,7 +140,8 @@ nnoremap <leader>ee :e ~/.vimrc<CR>
 nnoremap <leader>eb :e ~/.bashrc<CR>
 
 "backspace可以删除
-set backspace=indent,eol,start
+"set backspace=indent,eol,start
+set backspace=2
 
 
 
@@ -511,8 +512,14 @@ nnoremap <F4> <ESC>:set csqf=s-,c-,d-,i-,t-,e-<CR><ESC>:copen<CR>
 nnoremap <silent> <F5> :10sp<CR><ESC>:ConqueTerm bash <CR> 
 nnoremap <F6> :set wrap! wrap?<CR>
 
+nnoremap <silent> <C-Right> <ESC>:vertical resize +10 <CR>
+nnoremap <silent> <C-Left> <ESC>:vertical resize -10 <CR>
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+
 
 nnoremap <Leader>ud :GundoToggle<CR>
+
 
 " 相对行号      行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行
 set relativenumber number
@@ -529,6 +536,7 @@ function! NumberToggle()
   endif
 endfunc
 nnoremap <C-m> :call NumberToggle()<cr>
+
 
 
 
@@ -563,7 +571,7 @@ let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
 let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_tags_files = 1
 
-"let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
+let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
 
 " 跳转到定义处, 分屏打开
 let g:ycm_goto_buffer_command = 'horizontal-split'
@@ -573,16 +581,16 @@ nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 
 " 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
 " old version
-if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
-    let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
-endif
+"if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
+    "let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+"endif
 " new version
 if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
     let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 endif
 
 " 直接触发自动补全 insert模式下
-" let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_key_invoke_completion = '<C-Space>'
 " 黑名单,不启用
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
