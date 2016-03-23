@@ -33,6 +33,8 @@ NeoBundle 'vim-scripts/werks.vim'
 NeoBundle 'vim-scripts/sonoma.vim'
 NeoBundle 'vim-scripts/primary.vim'
 NeoBundle 'vim-scripts/apprentice.vim'
+NeoBundle 'vim-scripts/Ambient-Color-Scheme'
+NeoBundle "flazz/vim-colorschemes"
 
 " stl 语法 
 NeoBundle 'NLKNguyen/c-syntax.vim'
@@ -74,9 +76,8 @@ NeoBundle 'sjl/gundo.vim'
 " easymotion
 NeoBundle 'easymotion/vim-easymotion'
 
-" python IDE
-"NeoBundle 'python-rope/ropevim'
-NeoBundle 'pep8'
+" pfp-vim for binary edit with 010 bt
+NeoBundle 'd0c-s4vage/pfp-vim'
 
  call neobundle#end()
 
@@ -180,10 +181,19 @@ set wildmenu
 "colorscheme sonoma
 "colorscheme primary
 "colorscheme apprentice
+"
+"colorscheme tango2
+"colorscheme ambient
+"colorscheme  0x7A69_dark
+"colorscheme  256-grayvim
+
 
 " 设置paperColor
 set t_Co=256
+set term=screen-256color
 colorscheme PaperColor
+"
+
 
 " 设置vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -519,6 +529,10 @@ imap <c-s> <Esc>:w<CR>a
 
 
 nnoremap <Leader>ud :GundoToggle<CR>
+" \16                 十六进制格式查看
+nmap <leader>16 <ESC>:%!xxd<ESC>
+" \r16                返回普通格式
+nmap <leader>r16 <ESC>:%!xxd -r<ESC>
 
 
 " 相对行号      行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行
@@ -537,21 +551,6 @@ function! NumberToggle()
 endfunc
 nnoremap <C-m> :call NumberToggle()<cr>
 
-
-
-
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-"
-
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" python IDE
-"map <leader>j :RopeGotoDefinition<CR>
-"map <leader>r :RopeRename<CR>
-
-let g:pep8_map='<leader>88'
-
-
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 " ################### 自动补全 ###################
