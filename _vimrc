@@ -76,6 +76,10 @@ NeoBundle 'sjl/gundo.vim'
 " easymotion
 NeoBundle 'easymotion/vim-easymotion'
 
+" python IDE
+"NeoBundle 'python-rope/ropevim'
+NeoBundle 'pep8'
+
 " pfp-vim for binary edit with 010 bt
 NeoBundle 'd0c-s4vage/pfp-vim'
 
@@ -115,6 +119,8 @@ nmap <Leader>w :w<CR>
 nmap <Leader>WQ :wa<CR>:q<CR>
 " 不做任何保存，直接退出 vim
 nmap <Leader>Q :qa!<CR>
+"noremap 8 ^
+noremap - $
 
 "窗口切换
 " 设置快捷键遍历子窗口
@@ -194,6 +200,9 @@ set term=screen-256color
 colorscheme PaperColor
 "
 
+if &diff
+    colors PaperColor
+endif
 
 " 设置vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -549,8 +558,28 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-m> :call NumberToggle()<cr>
+nnoremap <F7> :call NumberToggle()<cr>
 
+" Search the current file for what's currently in the search register and display matches
+nmap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+" Search the current file for the word under the cursor and display matches
+nmap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+" Search the current file for the WORD under the cursor and display matches
+nmap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+
+set pastetoggle=<F10>
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"
+
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+" python IDE
+"map <leader>j :RopeGotoDefinition<CR>
+"map <leader>r :RopeRename<CR>
+
+let g:pep8_map='<leader>88'
+
+
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 " ################### 自动补全 ###################
