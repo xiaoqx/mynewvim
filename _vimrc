@@ -55,8 +55,9 @@ NeoBundle 'taglist'
 NeoBundle 'scrooloose/nerdcommenter'
 " 代码开发， 补全
 NeoBundle 'c.vim'
-"NeoBundle 'SirVer/ultisnips'
-NeoBundle 'vim-snippets'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+"NeoBundle 'vim-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'ervandew/supertab'
 "NeoBundle 'Valloric/YouCompleteMe'
@@ -82,6 +83,9 @@ NeoBundle 'pep8'
 
 " pfp-vim for binary edit with 010 bt
 NeoBundle 'd0c-s4vage/pfp-vim'
+
+"NeoBundle 'lervag/vimtex'
+NeoBundle 'gerw/vim-latex-suite'
 
  call neobundle#end()
 
@@ -144,7 +148,8 @@ nnoremap <Leader>ss :split<CR>
 
 " set open vimrc
 nnoremap <leader>ee :e ~/.vimrc<CR>
-nnoremap <leader>eb :e ~/.bashrc<CR>
+"nnoremap <leader>eb :e ~/.bashrc<CR>
+nnoremap <leader>eb :e ~/.bash_profile<CR>
 
 "backspace可以删除
 "set backspace=indent,eol,start
@@ -435,10 +440,14 @@ nnoremap <Leader>sp :CtrlSF<CR>
 "let g:UltiSnipsSnippetDirectories=["mysnippets"]
 let g:UltiSnipsSnippetDirectories=["/home/xqx/.vim/bundle/ultisnips/mysnippets"]
 "let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+"let g:UltiSnipsListSnippets="ii"
 "let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " >>
 " neocomplete补全打开
@@ -568,6 +577,45 @@ nmap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohl
 nmap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
 set pastetoggle=<F10>
+
+nnoremap <Leader>cd "=strftime("%F")<CR>gp
+
+" kj 替换 Esc
+inoremap kj <Esc>
+noremap <F1> <Esc>
+inoremap <F1> <Esc>
+
+" select block
+nnoremap <leader>v V`}
+
+" y$ -> Y Make Y behave like other capitals
+map Y y$
+nnoremap de d$
+
+" 新建tab  Ctrl+t
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+" Keep search pattern at the center of the screen.
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" 命令行模式增强，ctrl - a到行首， -e 到行尾
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+nnoremap <C-a> <Home>
+nnoremap <C-e> <End>
+
+
+
+
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "
 
