@@ -1,6 +1,6 @@
 " Note: Skip initialization for vim-tiny or vim-small.
  if !1 | finish | endif
-
+ 
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"
 
@@ -86,6 +86,7 @@ NeoBundle 'd0c-s4vage/pfp-vim'
 
 "NeoBundle 'lervag/vimtex'
 NeoBundle 'gerw/vim-latex-suite'
+NeoBundle 'vim-scripts/Align'
 
  call neobundle#end()
 
@@ -542,8 +543,6 @@ nnoremap <F6> :set wrap! wrap?<CR>
 
 nnoremap <silent> <C-Right> <ESC>:vertical resize +10 <CR>
 nnoremap <silent> <C-Left> <ESC>:vertical resize -10 <CR>
-nmap <c-s> :w<CR>
-imap <c-s> <Esc>:w<CR>a
 
 
 nnoremap <Leader>ud :GundoToggle<CR>
@@ -613,7 +612,12 @@ inoremap <C-e> <End>
 nnoremap <C-a> <Home>
 nnoremap <C-e> <End>
 
-
+"map c-s to save files, it needs to set stty -ixon in .bashrc
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+"nnoremap <C-s> :w<CR>
+"inoremap <C-s> <Esc>:w<CR>a
 
 
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -629,6 +633,13 @@ let g:pep8_map='<leader>88'
 
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+" for vim-latex-suite to change c-j to c-g
+" redef C-j to C-g
+imap <C-g> <Plug>IMAP_JumpForward
+nmap <C-g> <Plug>IMAP_JumpForward
+
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " ################### 自动补全 ###################
 
