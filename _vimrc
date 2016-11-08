@@ -4,6 +4,7 @@
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"
 
+let os = substitute(system('uname -s'), "\n", "", "")
 
  if has('vim_starting')
    if &compatible
@@ -149,8 +150,11 @@ nnoremap <Leader>ss :split<CR>
 
 " set open vimrc
 nnoremap <leader>ee :e ~/.vimrc<CR>
-"nnoremap <leader>eb :e ~/.bashrc<CR>
-nnoremap <leader>eb :e ~/.bash_profile<CR>
+if os == "Darwin"
+    nnoremap <leader>eb :e ~/.bash_profile<CR>
+else
+    nnoremap <leader>eb :e ~/.bashrc<CR>
+endif 
 
 "backspace可以删除
 "set backspace=indent,eol,start
@@ -332,6 +336,7 @@ set foldlevelstart=99       " 打开文件是默认不折叠代码
 "set nofoldenable
 
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+nnoremap <Leader>uf zO
 
 "F12 一键切换.h .cpp
 nnoremap <silent> <F12> :A<CR>
