@@ -552,7 +552,8 @@ nnoremap <silent> <C-Left> <ESC>:vertical resize -10 <CR>
 
 nnoremap <Leader>ud :GundoToggle<CR>
 " \16                 十六进制格式查看
-nmap <leader>16 <ESC>:%!xxd<ESC>
+"nmap <leader>16 <ESC>:%!xxd<ESC>
+nmap <leader>16 <ESC>:%!xxd -g 1<ESC>
 " \r16                返回普通格式
 nmap <leader>r16 <ESC>:%!xxd -r<ESC>
 
@@ -583,6 +584,9 @@ nmap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohl
 set pastetoggle=<F10>
 
 nnoremap <Leader>cd "=strftime("%F")<CR>gp
+
+vmap <C-c><C-c> "+y
+nmap <C-v><C-v> "+p<CR>
 
 " kj 替换 Esc
 inoremap kj <Esc>
@@ -624,7 +628,16 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 "nnoremap <C-s> :w<CR>
 "inoremap <C-s> <Esc>:w<CR>a
 
+function GenTags()
+    "let shellcmd = 'ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
+    "execute !system(shellcmd)
+    execute '!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
+    execute '!find -name "*.h" -or -name "*.c" -or -name "*.cpp" -or -name "*.hpp" -or -name "*.inc" -or -name "*.in" |sort > cscope.files'
+    execute '!cscope -bkq -i cscope.files'
+endfunc
 
+"map <C-G> :call GenTags()<CR>
+map <Leader>gt :call GenTags()<CR>
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "
 
