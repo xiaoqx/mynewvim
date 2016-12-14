@@ -87,7 +87,8 @@ NeoBundle 'd0c-s4vage/pfp-vim'
 
 "NeoBundle 'lervag/vimtex'
 NeoBundle 'gerw/vim-latex-suite'
-NeoBundle 'vim-scripts/Align'
+"NeoBundle 'vim-scripts/Align'
+NeoBundle 'junegunn/vim-easy-align'
 
  call neobundle#end()
 
@@ -583,7 +584,7 @@ nmap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohl
 
 set pastetoggle=<F10>
 
-nnoremap <Leader>cd "=strftime("%F")<CR>gp
+nnoremap <Leader>cd "=strftime("%F %A")<CR>gp
 
 vmap <C-c><C-c> "+y
 nmap <C-v><C-v> "+p<CR>
@@ -657,6 +658,10 @@ let g:pep8_map='<leader>88'
 imap <C-g> <Plug>IMAP_JumpForward
 nmap <C-g> <Plug>IMAP_JumpForward
 
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+" for easy-align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 " ################### 自动补全 ###################
