@@ -737,7 +737,9 @@ function! Fcitx2zh()
    endif
 endfunction
 
-"set timeoutlen=150
+set timeoutlen=150
 autocmd InsertLeave * call Fcitx2en()
 "autocmd InsertEnter * call Fcitx2zh()
+" set timeoutlen back to 1000
+set timeoutlen=1000
 
