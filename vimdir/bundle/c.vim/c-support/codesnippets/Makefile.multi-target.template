@@ -23,12 +23,13 @@ SYS_LIBS        = -lm
 TARBALL_EXCLUDE = "*.{o,gz,zip}"
 ZIP_EXCLUDE     = *.o *.gz *.zip
 
-#TARGETS	= target_1 target_2
-TARGETS	= binaryname
 #获取当前目录下的c文件集，放在变量CUR_SOURCE中
 CUR_SOURCE=${wildcard *.c}
 #将对应的c文件名转为o文件后放在下面的CUR_OBJS变量中
 CUR_OBJS=${patsubst %.c, %.o, $(CUR_SOURCE)}
+CUR_ELFS=${patsubst %.c, %.elf, $(CUR_SOURCE)}
+#TARGETS	= target_1 target_2
+TARGETS	= $(CUR_ELFS)
 
 #---------- targets --------------------------------------
 all:	$(TARGETS)
@@ -40,10 +41,6 @@ all:	$(TARGETS)
 			$(CCP) $(CFLAGS) $*.cc
  
 #---------- target 1 -------------------------------------
-# 
-binaryname: $(CUR_OBJS)
-					$(CC) $(LFLAGS) $^ -o $@   $(SYS_LIBS)
-
 #  C  target
 target_1:	target_1.o
 					$(CC) $(LFLAGS) -o $@ $@.o  $(SYS_LIBS)
@@ -55,6 +52,11 @@ target_2:	target_2.o
 
 
 #---------- target 3 -------------------------------------
+%.elf: %.o
+	$(CC) $(LFLAGS) $*.c -o $@ $(SYS_LIBS)
+
+binaryname: $(CUR_OBJS)
+					$(CC) $(LFLAGS) $^ -o $@   $(SYS_LIBS)
 
 
 
@@ -74,6 +76,7 @@ zip:
 					zip -r  $$lokaldir.zip * -x $(ZIP_EXCLUDE)
 
 #---------- clear up -------------------------------------
+#rm  --force  $(EXECUTABLE) $(OBJECTS) $(PREREQUISITES)
 clean:
-				rm  --force  $(EXECUTABLE) $(OBJECTS) $(PREREQUISITES)
+	rm $(CUR_OBJS) $(CUR_ELFS)
  
